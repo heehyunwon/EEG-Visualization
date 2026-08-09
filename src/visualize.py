@@ -30,4 +30,20 @@ plt.show()
 
 print("첫 번째 채널: ", raw.ch_names[0])
 
+channel_indices = [0, 1, 2, 3, 4, 5]
+
+selected_data = data[channel_indices]
+
+plt.figure(figsize=(12, 8))
+
+for i in range(len(channel_indices)):
+    plt.subplot(6, 1, i + 1)
+    plt.plot(time, selected_data[i])
+    channel_name = raw.ch_names[channel_indices[i]]
+    plt.ylabel(channel_name)
+plt.xlabel("Time (seconds)")
+plt.tight_layout()
+plt.savefig("results/multi_channel.png", dpi=300)
+plt.show()
+
 
